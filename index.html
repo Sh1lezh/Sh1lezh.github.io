@@ -203,7 +203,7 @@
                     <span id="element"></span>
                     <div class="buttons">
                         <button class="btn">Resume</button>
-                        <button class="btn">GitHub</button>
+                        <button class="btn" onclick="redirectToGitHub()">GitHub</button>
                     </div>
                 </div>
             </div>
@@ -294,6 +294,9 @@
             strings: ['Web Developer', 'FreeLacner', '&amp; StartUp Founder.'],
             typeSpeed: 80,
         });
+        function redirectToGitHub() {
+            window.location.href = 'https://github.com';
+        }
     </script>
 </body>
 
