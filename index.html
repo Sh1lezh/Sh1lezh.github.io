@@ -12,170 +12,208 @@
         rel="stylesheet">
     <style>
         * {
-            margin: 0%;
-            padding: 0%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
             background-color: rgb(4, 4, 58);
             color: white;
             font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            font-size: 16px;
         }
 
         nav {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-            height: 80px;
+            padding: 1rem;
             background-color: rgb(4, 4, 33);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: rgb(4, 4, 33);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .nav-menu.active {
+            display: flex;
         }
 
         nav ul {
-            display: flex;
-            justify-content: center;
+            list-style: none;
         }
 
         nav ul li {
-            list-style: none;
-            margin: 0 23px;
-        }
-
-        main hr {
-            background: #171ab9;
-            border: 0;
-            height: 1.2px;
-            margin: 40px 80px;
+            margin: 0.5rem 0;
         }
 
         nav ul li a {
             text-decoration: none;
             color: white;
+            transition: color 0.3s;
+            font-size: 1.1rem;
         }
 
         nav ul li a:hover {
             color: rgb(97, 97, 226);
-            font-size: 1.02rem;
         }
 
         .left {
-            font-size: 1.75rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s ease-in-out;
+            background-color: white;
         }
 
         .firstSection {
             display: flex;
-            justify-content: space-around;
-            margin: 90px 0;
+            flex-direction: column;
             align-items: center;
-        }
-
-        .firstSection>div {
-            width: 30%;
+            text-align: center;
+            padding: 6rem 1rem 2rem;
+            min-height: 100vh;
         }
 
         .leftSection {
-            font-size: 2.8rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
         }
 
         .leftSection .buttons {
-            padding: 10px 10px;
+            margin-top: 1.5rem;
         }
 
         .leftSection .btn {
-            padding: 12px;
-            background: rgb(4, 4, 58);
+            padding: 0.75rem 1.5rem;
+            background: transparent;
             color: white;
             border: 2px solid white;
-            border-radius: 6px;
-            font-size: 20px;
+            border-radius: 30px;
+            font-size: 1rem;
             cursor: pointer;
+            margin: 0.5rem;
+            transition: background 0.3s, color 0.3s;
         }
 
-        .rightSection {
-            width: 80%;
+        .leftSection .btn:hover {
+            background: white;
+            color: rgb(4, 4, 58);
+        }
+
+        .rightSection img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 2rem;
         }
 
         .purple {
             color: rgb(91, 39, 236);
         }
 
-        .gray {
-            color: gray;
-        }
-
         #element {
             color: rgb(91, 39, 236);
-        }
-
-        .secondSection {
-            max-width: 80vw;
-            margin: auto;
-            height: 80vh;
-        }
-
-        .secondSection h1 {
-            font-size: 1.6rem;
-        }
-
-        .secondSection .box {
-            background: white;
-            height: 2px;
-            width: 80vw;
-            margin: 54px 0px;
-            display: flex;
-        }
-        
-        .secondSection .vertical {
-            height: 93px;
-            width: 1px;
-            background-color: white;
-            margin: 0 91px;
-        }
-
-        .image-top {
-            width: 23px;
-            position: relative;
-            top: -32px;
-            left: -9px;
-        }
-
-        .vertical-title {
-            position: relative;
-            top: 75px;
-            width: 146px;
-        }
-
-        .vertical-desc {
-            position: relative;
-            top: 86px;
-            color: gray;
-            width: 150px;
-            font-size: 9px;
+            font-weight: bold;
         }
 
         footer {
             background-color: rgb(4, 8, 30);
+            padding: 2rem 1rem;
+            text-align: center;
         }
 
         .footer {
-            display: flex;
-            padding: 23px 122px;
-            justify-content: space-evenly;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
 
         .footer ul {
             list-style: none;
+            padding: 0;
         }
 
-        .footer > div {
-            width: 223px;
+        .footer ul li {
+            margin: 0.5rem 0;
         }
 
         footer .footer-rights {
-            text-align: center;
             color: gray;
-            padding: 23px 0;
+            margin-top: 1.5rem;
         }
 
+        @media (min-width: 768px) {
+            nav {
+                padding: 1rem 2rem;
+            }
+
+            .nav-menu {
+                display: flex;
+                flex-direction: row;
+                position: static;
+                background-color: transparent;
+                padding: 0;
+            }
+
+            .nav-menu li {
+                margin: 0 1rem;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .firstSection {
+                flex-direction: row;
+                justify-content: space-around;
+                text-align: left;
+                padding: 8rem 2rem 4rem;
+            }
+
+            .leftSection {
+                font-size: 2.5rem;
+                margin-bottom: 0;
+            }
+
+            .rightSection img {
+                margin-top: 0;
+            }
+
+            .footer {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .leftSection {
+                font-size: 3rem;
+            }
+        }
     </style>
 </head>
 
@@ -183,14 +221,17 @@
     <header>
         <nav>
             <div class="left">Sh1lezh</div>
-            <div class="right">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Projects</a></li>
-                    <li><a href="">Contact Me</a></li>
-                </ul>
+            <ul class="nav-menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Contact Me</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
             </div>
         </nav>
     </header>
@@ -202,50 +243,13 @@
                     I am a Machine<div> Learning Enthusiast</div>
                     <span id="element"></span>
                     <div class="buttons">
-                        <button class="btn">Resume</button>
+                        <button class="btn" onclick="redirectToLinkedin()">LinkedIn</button>
                         <button class="btn" onclick="redirectToGitHub()">GitHub</button>
                     </div>
                 </div>
             </div>
             <div class="rightSection">
-                <img src="pngegg.png" atl="machine learning png">
-            </div>
-        </section>
-        <hr>
-        <section class="secondSection">
-            <span class="gray">Work I Have Done So Far</span>
-            <h1>Work Experience</h1>
-            <div class="box">
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
-                <div class="vertical">
-                    <img class="image-top" src="Untitled.png" alt="image">
-                    <div class="vertical-title">AI Engineer (2024-Future)</div>
-                    <div class="vertical-desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Temporibus fuga amet sed? Deleniti recusandae veniam, quos in numquam facilis sapiente.</div>
-                </div>
+                <img src="pngegg.png" alt="machine learning png">
             </div>
         </section>
     </main>
@@ -291,12 +295,30 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script>
         var typed = new Typed('#element', {
-            strings: ['Web Developer', 'FreeLacner', '&amp; StartUp Founder.'],
+            strings: ['Web Developer', 'Freelancer', 'StartUp Founder.'],
             typeSpeed: 80,
         });
+
+        function redirectToLinkedin() {
+            window.location.href = 'https://linkedin.com/in/shaileshcn';
+        }
+
         function redirectToGitHub() {
             window.location.href = 'https://github.com/sh1lezh';
         }
+
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        })
+
+        document.querySelectorAll(".nav-menu li a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
+        }))
     </script>
 </body>
 
