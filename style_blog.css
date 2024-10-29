@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(4, 4, 58);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: rgb(4, 4, 33);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgb(4, 4, 33);
+    padding: 1rem;
+    text-align: center;
+}
+
+.nav-menu.active {
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0.5rem 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s;
+    font-size: 1.1rem;
+}
+
+nav ul li a:hover {
+    color: rgb(97, 97, 226);
+}
+
+.left {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+[role="main"] {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 60px; /* Account for fixed nav */
+}
+
+[role="main"] h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.purple {
+    color: rgb(91, 39, 236);
+}
+
+#element {
+    color: rgb(91, 39, 236);
+    font-weight: bold;
+}
+
+footer {
+    background-color: rgb(4, 8, 30);
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin: 0.5rem 0;
+}
+
+footer .footer-rights {
+    color: gray;
+    margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    nav {
+        padding: 1rem 2rem;
+    }
+
+    .nav-menu {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        background-color: transparent;
+        padding: 0;
+    }
+
+    .nav-menu li {
+        margin: 0 1rem;
+    }
+
+    .hamburger {
+        display: none;
+    }
+
+    .footer {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
